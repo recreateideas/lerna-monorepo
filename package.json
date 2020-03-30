@@ -11,6 +11,9 @@
     "husky": "4.2.3",
     "lerna": "3.20.2"
   },
+  "scripts": {
+    "postinstall": "sh scripts/post-install.sh"
+  },
   "husky": {
     "hooks": {
       "commit-msg": "./scripts/commit-lint.sh -E HUSKY_GIT_PARAMS"
