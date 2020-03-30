@@ -7,5 +7,3 @@ change pkg-2 minor
 chnage pkg-2 minor 2
 
 test change
-
-test change
