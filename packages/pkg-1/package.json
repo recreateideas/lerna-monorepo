@@ -4,5 +4,7 @@
   "dependencies": {
     "pkg-2": "^0.0.3",
     "pkg-3": "^0.0.3"
-  }
+  },
+  "license": "UNLICENSED",
+  "gitHead": "3a19ef92d47356bacb8081aeba5101a85f9e87ad"
 }
