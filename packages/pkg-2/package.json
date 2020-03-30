@@ -1,8 +1,8 @@
 {
   "name": "pkg-2",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "dependencies": {
-    "pkg-3": "^0.0.4"
+    "pkg-3": "^0.0.5"
   },
   "license": "MIT",
   "gitHead": "9ed6dfe465e51ec94f6903350bb4520a6f08f96b"
