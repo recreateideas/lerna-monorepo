@@ -8,7 +8,7 @@
   },
   "version": "0.0.12",
   "dependencies": {
-    "pkg-3": "^0.0.7"
+    "@recreateideas/pkg-3": "^0.0.11"
   },
   "license": "MIT",
   "gitHead": "10ca3524092f91d7b307310c03eea9b5348ecdd3"
