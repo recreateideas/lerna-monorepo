@@ -1,9 +1,9 @@
 {
-  "name": "pkg-2",
+  "name": "@recreateideas/pkg-2",
   "version": "0.0.7",
   "dependencies": {
     "pkg-3": "^0.0.7"
   },
   "license": "MIT",
-  "gitHead": "a3014de1a9a0c490e37ff66a4db90f49e7debce0"
+  "gitHead": "e261ed05168d015b96fdc040a4b95a92e6cae80f"
 }
