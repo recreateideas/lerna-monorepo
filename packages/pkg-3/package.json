@@ -1,6 +1,5 @@
 {
   "name": "pkg-3",
   "version": "0.0.1",
-  "private": true,
-  "dependencies": {}
+  "private": true
 }

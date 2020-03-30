@@ -3,6 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "pkg-3": "0.0.1"
+    "pkg-3": "^0.0.1"
   }
 }
