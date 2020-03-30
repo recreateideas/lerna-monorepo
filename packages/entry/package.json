@@ -8,9 +8,9 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "dependencies": {
-    "@recreateideas/pkg-1": "0.2.0",
-    "@recreateideas/pkg-2": "0.2.1",
-    "@recreateideas/pkg-3": "0.1.0"
+    "@recreateideas/pkg-1": "0.2.1",
+    "@recreateideas/pkg-2": "0.2.2",
+    "@recreateideas/pkg-3": "0.1.1"
   },
   "license": "MIT"
 }
