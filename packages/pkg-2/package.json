@@ -1,8 +1,8 @@
 {
   "name": "pkg-2",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "dependencies": {
-    "pkg-3": "^0.0.3"
+    "pkg-3": "^0.0.4"
   },
   "license": "UNLICENSED",
   "gitHead": "3a19ef92d47356bacb8081aeba5101a85f9e87ad"
