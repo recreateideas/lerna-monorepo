@@ -6,9 +6,9 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
-  "version": "0.1.2",
+  "version": "0.1.3",
   "dependencies": {
-    "@recreateideas/pkg-2": "^0.2.0",
+    "@recreateideas/pkg-2": "^0.2.1",
     "@recreateideas/pkg-3": "^0.1.0"
   },
   "license": "MIT",
