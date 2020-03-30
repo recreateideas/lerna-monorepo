@@ -1,6 +1,6 @@
 {
   "name": "@recreateideas/pkg-1",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "dependencies": {
     "pkg-2": "^0.0.7",
     "pkg-3": "^0.0.7"
