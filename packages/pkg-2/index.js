@@ -6,3 +6,4 @@ export default 'ciao-pkg-2';
 // some
 // some
 // some
+// some
