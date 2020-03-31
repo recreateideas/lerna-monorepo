@@ -5,10 +5,10 @@
   "exact": true,
   "command": {
     "version": {
+      "allowBranch": "master",
+      "conventionalCommits": true
     },
     "publish": {
-      "allowBranch": "master",
-      "conventionalCommits": true,
       "message": "chore(release): publish",
       "registry": "https://npm.pkg.github.com"
     },
