@@ -12,7 +12,8 @@
     "lerna": "3.20.2"
   },
   "scripts": {
-    "postinstall": "sh scripts/post-install.sh"
+    "postinstall": "sh scripts/post-install.sh",
+    "lerna-pub":"lerna publish"
   },
   "husky": {
     "hooks": {
