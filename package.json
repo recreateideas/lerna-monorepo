@@ -1,9 +1,9 @@
 {
   "name": "@recreateideas/lerna-monorepo",
   "private": true,
-  "repository": "https://gitlab.enboarder.net/application/frontend/test-registry.git",
+  "repository": "https://github.com/recreateideas/lerna-monorepo.git",
   "publishConfig": {
-    "registry": "https://gitlab.enboarder.net/application/frontend/test-registry.git"
+    "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
     "@commitlint/cli": "8.3.5",

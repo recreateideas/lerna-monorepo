@@ -9,8 +9,7 @@
       "conventionalCommits": true
     },
     "publish": {
-      "message": "chore(release): publish",
-      "registry": "https://gitlab.enboarder.net/application/frontend/test-registry.git"
+      "message": "chore(release): publish"
     },
     "bootstrap": {}
   },
