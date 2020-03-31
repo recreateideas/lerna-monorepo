@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.14](https://github.com/recreateideas/lerna-monorepo/compare/@recreateideas/entry@0.1.13...@recreateideas/entry@0.1.14) (2020-03-31)
+
+
+### Bug Fixes
+
+* removed registry from around ([d95e4f8](https://github.com/recreateideas/lerna-monorepo/commit/d95e4f88797dc9388fc89f03324604a5dd46f984))
+
+
+
+
+
 ## [0.1.13](https://github.com/recreateideas/lerna-monorepo/compare/@recreateideas/entry@0.1.12...@recreateideas/entry@0.1.13) (2020-03-31)
 
 

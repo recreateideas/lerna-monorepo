@@ -3,10 +3,10 @@
   "repository": {
     "url": "https://github.com/recreateideas/lerna-monorepo.git"
   },
-  "version": "0.2.14",
+  "version": "0.2.15",
   "dependencies": {
-    "@recreateideas/pkg-2": "0.5.5",
-    "@recreateideas/pkg-3": "0.2.3"
+    "@recreateideas/pkg-2": "0.5.6",
+    "@recreateideas/pkg-3": "0.2.4"
   },
   "license": "MIT",
   "gitHead": "d870cc757fc336da72962bb1144d27500a2cd08f"
