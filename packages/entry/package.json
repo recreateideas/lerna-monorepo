@@ -12,5 +12,6 @@
     "@recreateideas/pkg-2": "0.4.1",
     "@recreateideas/pkg-3": "0.2.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "c68dd0756334ee9144ae9d0edbccfab57ef050ca"
 }
