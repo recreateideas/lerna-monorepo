@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.5](https://github.com/recreateideas/lerna-monorepo/compare/@recreateideas/pkg-2@0.4.4...@recreateideas/pkg-2@0.4.5) (2020-03-31)
+
+
+### Bug Fixes
+
+* **add:** add ([117bbe4](https://github.com/recreateideas/lerna-monorepo/commit/117bbe461a7ec591606c8141e9783fc188583fd6))
+
+
+
+
+
 ## [0.4.4](https://github.com/recreateideas/lerna-monorepo/compare/@recreateideas/pkg-2@0.4.3...@recreateideas/pkg-2@0.4.4) (2020-03-31)
 
 
