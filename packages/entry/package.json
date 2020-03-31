@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "@recreateideas/pkg-1": "0.2.8",
-    "@recreateideas/pkg-2": "0.4.6",
+    "@recreateideas/pkg-2": "0.4.6"
+  },
+  "devDependencies": {
     "@recreateideas/pkg-3": "0.2.0"
   },
   "license": "MIT",
