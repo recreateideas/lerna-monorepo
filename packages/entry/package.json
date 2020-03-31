@@ -1,15 +1,16 @@
 {
-  "name": "@recreateideas/pkg-2",
+  "name": "@recreateideas/entry",
+  "version": "0.1.0",
   "repository": {
     "url": "https://github.com/recreateideas/lerna-monorepo.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
-  "version": "0.4.0",
   "dependencies": {
+    "@recreateideas/pkg-1": "0.5.1",
+    "@recreateideas/pkg-2": "0.4.0",
     "@recreateideas/pkg-3": "0.2.0"
   },
-  "license": "MIT",
-  "gitHead": "10ca3524092f91d7b307310c03eea9b5348ecdd3"
+  "license": "MIT"
 }
