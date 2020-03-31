@@ -3,7 +3,7 @@
   "private": true,
   "repository": "https://github.com/recreateideas/lerna-monorepo.git",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/recreateideas"
   },
   "devDependencies": {
     "@commitlint/cli": "8.3.5",
