@@ -1,6 +1,6 @@
 {
   "name": "@recreateideas/entry",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "repository": {
     "url": "https://github.com/recreateideas/lerna-monorepo.git"
   },
@@ -8,8 +8,8 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "dependencies": {
-    "@recreateideas/pkg-1": "0.2.12",
-    "@recreateideas/pkg-2": "0.5.3"
+    "@recreateideas/pkg-1": "0.2.13",
+    "@recreateideas/pkg-2": "0.5.4"
   },
   "devDependencies": {
     "@recreateideas/pkg-3": "0.2.2"
