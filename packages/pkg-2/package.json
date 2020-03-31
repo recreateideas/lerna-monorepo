@@ -6,7 +6,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
-  "version": "0.4.2",
+  "version": "0.4.3",
   "dependencies": {
     "@recreateideas/pkg-3": "0.2.0"
   },
