@@ -3,9 +3,6 @@
   "repository": {
     "url": "https://github.com/recreateideas/lerna-monorepo.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "version": "0.5.4",
   "peerDependencies": {
     "@recreateideas/pkg-3": "0.2.1"

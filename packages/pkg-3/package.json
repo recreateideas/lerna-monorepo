@@ -4,9 +4,6 @@
   "repository": {
     "url": "https://github.com/recreateideas/lerna-monorepo.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "license": "MIT",
   "gitHead": "10ca3524092f91d7b307310c03eea9b5348ecdd3"
 }
