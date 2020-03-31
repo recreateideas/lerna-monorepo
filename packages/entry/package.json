@@ -8,7 +8,7 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "dependencies": {
-    "@recreateideas/pkg-1": "0.5.7",
+    "@recreateideas/pkg-1": "0.2.7",
     "@recreateideas/pkg-2": "0.4.6",
     "@recreateideas/pkg-3": "0.2.0"
   },
