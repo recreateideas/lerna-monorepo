@@ -1,6 +1,6 @@
 {
   "name": "@recreateideas/pkg-3",
-  "version": "0.2.8",
+  "version": "0.2.9-test.qa.0",
   "repository": {
     "url": "https://github.com/recreateideas/lerna-monorepo.git"
   },
