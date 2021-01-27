@@ -1,2 +1,2 @@
 export default 'ciao-pkg-3';
-// some-change
+// some-change 2
