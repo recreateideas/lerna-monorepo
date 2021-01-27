@@ -14,7 +14,7 @@
   "scripts": {
     "postinstall": "sh scripts/post-install.sh",
     "lerna-pub":"lerna publish",
-    "lerna-ver":"lerna version --conventional-prerelease --preid test.qa --yes"
+    "lerna-ver":"lerna version --conventional-prerelease --preid test --yes"
   },
   "husky": {
     "hooks": {
