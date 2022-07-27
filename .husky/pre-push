@@ -24,7 +24,7 @@ echo "**-**"
 echo $current_origin_sha
 echo "*****"
 
-git commit --amend -m $old_mesage $current_origin_sha
+git commit --amend -m "$old_mesage" "$current_origin_sha"
 
 # echo "$current_origin_sha" > .last-origin
 
