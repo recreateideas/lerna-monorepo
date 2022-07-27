@@ -18,6 +18,12 @@ fi
 
 old_mesage="$(git log -1 --pretty=%B)"
 
+echo "*****"
+echo $old_mesage
+echo "**-**"
+echo $current_origin_sha
+echo "*****"
+
 git commit --amend -m $old_mesage $current_origin_sha
 
 # echo "$current_origin_sha" > .last-origin
