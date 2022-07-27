@@ -20,9 +20,8 @@ fi
 echo "$current_origin_sha" > .last-origin
 
 # last_commit_sha=$(git log | grep commit -m 1 | awk '{ print $2 }');
-git pull
-git add .
-git commit -m "fix(last-origin): updated" --no-verify
-# git rebase -i --autosquash $last_commit_sha~1
-git reset HEAD~1 --soft
-git commit --amend --no-edit
+# git add .last-origin
+# git commit -m "fix(last-origin): updated" --no-verify
+# # git rebase -i --autosquash $last_commit_sha~1
+# git reset HEAD~1 --soft
+# git commit --amend --no-edit
