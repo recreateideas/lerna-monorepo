@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
+git pull
+
 origin_file=.last-origin 
 
 branch_name="$(git symbolic-ref HEAD 2>/dev/null)"
@@ -16,21 +18,11 @@ if [[ $current_origin_sha == "$saved_origin"  ]]; then
     exit 0
 fi
 
-old_mesage="$(git log -1 --pretty=%B)"
+echo "$current_origin_sha" > .last-origin
 
-echo "*****"
-echo $old_mesage
-echo "**-**"
-echo $current_origin_sha
-echo "*****"
-
-git commit --amend -m "$old_mesage" -m "$current_origin_sha"
-
-# echo "$current_origin_sha" > .last-origin
-
-# # last_commit_sha=$(git log | grep commit -m 1 | awk '{ print $2 }');
-# git add .last-origin
-# git commit -m "fix(last-origin): updated" --no-verify
-# # git rebase -i --autosquash $last_commit_sha~1
-# git reset HEAD~1 --soft
-# git commit --amend --no-edit
+# last_commit_sha=$(git log | grep commit -m 1 | awk '{ print $2 }');
+git add .last-origin
+git commit -m "fix(last-origin): updated" --no-verify
+# git rebase -i --autosquash $last_commit_sha~1
+git reset HEAD~1 --soft
+git commit --amend --no-edit
