@@ -6,7 +6,7 @@ origin_file=.last-origin
 branch_name="$(git symbolic-ref HEAD 2>/dev/null)"
 branch_name=${branch_name##refs/heads/}
 
-current_origin_sha=$(git show origin/"$branch_name" | grep commit -m 1 | awk '{ print $2 }')
+current_origin_sha=$(git ls-remote https://github.com/recreateideas/lerna-monorepo.git | grep "refs/heads/develop" | awk '{ print $1 }' )
 saved_origin=`cat $origin_file`
 
 echo ORIGIN $current_origin_sha
