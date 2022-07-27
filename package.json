@@ -1,6 +1,9 @@
 {
   "name": "@recreateideas/lerna-monorepo",
-  "repository": "https://github.com/recreateideas/lerna-monorepo.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/recreateideas/lerna-monorepo.git"
+  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/recreateideas"
   },
