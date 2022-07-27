@@ -20,36 +20,44 @@
 # fi
 file=~/Desktop/text
 rm -f $file
-last_2_commits=$(git log | grep commit -m 2 | awk '{ print $2 }');
-echo $last_2_commits
-git diff ${last_2_commits} | grep "+++" | grep packages
-# git diff ${last_2_commits} | grep "+++" | while read scoped_package; do
-#       package_name=${scoped_package#"$prefix"}
-#       #  if this is not a common package, and common package has changes, make this trigger depend on common package trigger
-#       if [[ $scoped_package != "$common_package" && $has_common_trigger_changes ]]; then  
-#         needs="needs: [\"trigger:$common_package_name\"]"
-#       else
-#         needs=""
-#       fi
-#       echo "
-# trigger:$package_name:
-#   stage: triggers
-#   trigger:
-#     include: packages/$package_name/.gitlab-ci.yml
-#     strategy: depend
-#   variables:
-#     BAAS_PACKAGE: $package_name
-#   $needs
-#   when: on_success
-#   rules:
-#     - if: '\$GITLAB_USER_LOGIN != \"engineering-sa\" && \$CI_COMMIT_MESSAGE =~ /[^chore\(release\)].*/'
-#     " >> $file
-#   done
+last_commit_sha=$(git log | grep commit -m 1 | awk '{ print $2 }');
+echo LAST $last_commit_sha
+branch_name="$(git symbolic-ref HEAD 2>/dev/null)"
+branch_name=${branch_name##refs/heads/}
 
-#  echo " 
-# ********* dynamic child pipeline content ***********
-#  "
-#   cat $file
-#   echo " 
-# ********* ------------------------------ ***********
-#  "
+last_origin_sha=$(git show origin/"$branch_name" | grep commit -m 1 | awk '{ print $2 }')
+echo ORIGIN $last_origin_sha
+
+git diff $last_commit_sha $last_origin_sha | grep "+++" | grep -oE "b\/packages\/[^/]+" | sort -u
+
+prefix="b/packages"
+git diff $last_commit_sha $last_origin_sha | grep "+++" | grep -oE "b\/packages\/[^/]+" | sort -u | while read scoped_package; do
+      package_name=${scoped_package#"$prefix"}
+      #  if this is not a common package, and common package has changes, make this trigger depend on common package trigger
+      if [[ $scoped_package != "$common_package" && $has_common_trigger_changes ]]; then  
+        needs="needs: [\"trigger:$common_package_name\"]"
+      else
+        needs=""
+      fi
+      echo "
+trigger:$package_name:
+  stage: triggers
+  trigger:
+    include: packages/$package_name/.gitlab-ci.yml
+    strategy: depend
+  variables:
+    BAAS_PACKAGE: $package_name
+  $needs
+  when: on_success
+  rules:
+    - if: '\$GITLAB_USER_LOGIN != \"engineering-sa\" && \$CI_COMMIT_MESSAGE =~ /[^chore\(release\)].*/'
+    " >> $file
+  done
+
+ echo " 
+********* dynamic child pipeline content ***********
+ "
+  cat $file
+  echo " 
+********* ------------------------------ ***********
+ "
