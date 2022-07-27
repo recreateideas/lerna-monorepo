@@ -20,6 +20,7 @@
 # fi
 preid=$(git rev-parse --abbrev-ref HEAD | sed 's/\//-/g' | sed 's/[^0-9a-zA-Z\-]//g' | tr '[:upper:]' '[:lower:]')
 changed=$(npx lerna changed --json)
+echo $changed
 val=$(node scripts/find_preid.js $preid "${changed}" "$(git tag --sort=committerdate)")
 echo $val
 # publish packages in prerelease for feature branches, develop, stage, release
