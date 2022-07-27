@@ -12,11 +12,9 @@
     "lerna": "3.20.2"
   },
   "scripts": {
+    "lerna:bootstrap": "npm i && lerna bootstrap",
     "postinstall": "sh scripts/post-install.sh",
-    "lerna-pub":"lerna publish",
-    "lerna-ver-qa":"lerna version --conventional-prerelease --preid qa --yes",
-    "lerna-ver-test":"lerna version --conventional-prerelease --preid test --yes",
-    "lerna-ver":"lerna version --conventional-graduate --yes"
+    "version": "sh scripts/lerna-version.sh"
   },
   "husky": {
     "hooks": {
