@@ -8,9 +8,11 @@ last_origin_sha=$(git show origin/"$branch_name" | grep commit -m 1 | awk '{ pri
 echo ORIGIN $last_origin_sha
 echo "$last_origin_sha" > .last-origin
 
-last_commit_sha=$(git log | grep commit -m 1 | awk '{ print $2 }');
+# last_commit_sha=$(git log | grep commit -m 1 | awk '{ print $2 }');
 
 git add .last-origin 
-git commit -m "fix(last-origin): updated" --no-verify --fixup=$last_commit_sha
-git rebase -i --autosquash $last_commit_sha~1
+git commit -m "fix(last-origin): updated" --no-verify
+# git rebase -i --autosquash $last_commit_sha~1
 
+git reset HEAD~1 --soft
+git commit --amend --no-edit
