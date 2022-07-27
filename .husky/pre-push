@@ -16,10 +16,13 @@ if [[ $current_origin_sha == "$saved_origin"  ]]; then
     exit 0
 fi
 
+old_mesage="$(git log -1 --pretty=%B)"
 
-echo "$current_origin_sha" > .last-origin
+git commit --amend -m $old_mesage $current_origin_sha
 
-# last_commit_sha=$(git log | grep commit -m 1 | awk '{ print $2 }');
+# echo "$current_origin_sha" > .last-origin
+
+# # last_commit_sha=$(git log | grep commit -m 1 | awk '{ print $2 }');
 # git add .last-origin
 # git commit -m "fix(last-origin): updated" --no-verify
 # # git rebase -i --autosquash $last_commit_sha~1
