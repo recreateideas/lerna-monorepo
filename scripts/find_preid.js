@@ -37,11 +37,11 @@ const find_preid = () => {
     ).exec(c.version);
     const sourceIndex = findPreidIndex(sourcePreid);
     if (sourceIndex === destIndex) {
-      console.log("DO NOTHING, SAME");
+      console.log("   [DO NOTHING, SAME]");
     } else if (sourceIndex > destIndex) {
-      console.log("DO NOTHING, AHEAD");
+      console.log("   [DO NOTHING, AHEAD]");
     } else if (sourceIndex < destIndex) {
-      console.log("BUMP");
+      console.log("   [BUMP]");
     }
     // compare
     // update
