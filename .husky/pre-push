@@ -1,6 +1,9 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+branch_name="$(git symbolic-ref HEAD 2>/dev/null)"
+branch_name=${branch_name##refs/heads/}
+
 last_origin_sha=$(git show origin/"$branch_name" | grep commit -m 1 | awk '{ print $2 }')
 echo ORIGIN $last_origin_sha
 
