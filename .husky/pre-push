@@ -1,26 +1,27 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-origin_file=.last-origin 
 
-branch_name="$(git symbolic-ref HEAD 2>/dev/null)"
-branch_name=${branch_name##refs/heads/}
+    head_file=HEAD.md
 
-repo_url=$(node -pe "require('./package.json').repository.url") 
-current_origin_sha=$(git ls-remote "${repo_url}" | grep "refs/heads/develop" | awk '{ print $1 }' )
-saved_origin=`cat $origin_file`
+    branch_name="$(git symbolic-ref HEAD 2>/dev/null)"
+    branch_name=${branch_name##refs/heads/}
 
-echo ORIGIN $current_origin_sha
-echo SAVED_ORIGIN $saved_origin
+    repo_url=$(node -pe "require('./package.json').repository.url") 
+    current_head_sha=$(git ls-remote "${repo_url}" | grep "refs/heads/develop" | awk '{ print $1 }' )
+    saved_head=`cat $head_file`
 
-if [[ $current_origin_sha == "$saved_origin"  ]]; then
-    echo "> Same origin."
-    exit 0
-fi
+    echo CURRENT ORIGIN $current_head_sha
+    echo SAVED ORIGIN $saved_head
 
-echo "$current_origin_sha" > .last-origin
+    if [[ $current_head_sha == "$saved_head"  ]]; then
+        echo "> Same head."
+        exit 0
+    fi
 
-git add .last-origin
-git commit -m "fix(last-origin): updated" --no-verify
-git reset HEAD~1 --soft
-git commit --amend --no-edit
+    echo "$current_head_sha" > $head_file
+
+    git add $head_file
+    git commit -m "fix(last-head): updated" --no-verify
+    git reset HEAD~1 --soft
+    git commit --amend --no-edit
