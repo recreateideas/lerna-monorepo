@@ -14,7 +14,7 @@
   "scripts": {
     "lerna:bootstrap": "npm i && lerna bootstrap",
     "postinstall": "sh scripts/post-install.sh",
-    "version": "sh scripts/lerna-version.sh"
+    "publish": "sh scripts/lerna-publish.sh"
   },
   "husky": {
     "hooks": {

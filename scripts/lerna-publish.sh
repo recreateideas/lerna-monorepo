@@ -21,4 +21,4 @@
 
 preid=$(git rev-parse --abbrev-ref HEAD | sed 's/\//-/g' | sed 's/[^0-9a-zA-Z\-]//g' | tr '[:upper:]' '[:lower:]')
 # publish packages in prerelease for feature branches, develop, stage, release
-npx lerna version --conventional-prerelease --preid $preid
+npx lerna publish --conventional-prerelease --preid $preid
