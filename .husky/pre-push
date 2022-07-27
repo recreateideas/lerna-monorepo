@@ -12,6 +12,7 @@ if [[ $current_origin_sha == "$value"  ]]; then
     exit 0
 fi
 
+
 echo ORIGIN $current_origin_sha
 echo "$current_origin_sha" > .last-origin
 
