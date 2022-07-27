@@ -18,10 +18,8 @@
 #     # publish stable versions for prod
 #     npx lerna publish --conventional-graduate --yes
 # fi
-preid=$(git rev-parse --abbrev-ref HEAD | sed 's/\//-/g' | sed 's/[^0-9a-zA-Z\-]//g' | tr '[:upper:]' '[:lower:]')
-changed=$(npx lerna changed --json)
-echo $changed
-val=$(node scripts/find_preid.js $preid "${changed}" "$(git tag --sort=committerdate)")
-echo $val
-# publish packages in prerelease for feature branches, develop, stage, release
-npx lerna publish --conventional-prerelease --preid $preid
+last_2_commits=$(git log | grep commit -m 2 | awk '{ print $2 }');
+echo $last_2_commits
+echo $(git diff ${last_2_commits} | grep "+++")
+# val=$(node scripts/find_preid.js $preid "${changed}" "$(git tag --sort=committerdate)")
+# echo $val
