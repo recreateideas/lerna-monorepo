@@ -6,10 +6,11 @@ branch_name=${branch_name##refs/heads/}
 
 last_origin_sha=$(git show origin/"$branch_name" | grep commit -m 1 | awk '{ print $2 }')
 echo ORIGIN $last_origin_sha
-
 echo "$last_origin_sha" > .last-origin
 
-git add .last-origin
-git commit -m "fix(last-origin): updated" --no-verify
+last_commit_sha=$(git log | grep commit -m 1 | awk '{ print $2 }');
 
-git reset --soft HEAD~2 && git commit
+git add .last-origin 
+git commit -m "fix(last-origin): updated" --no-verify --fixup=$last_commit_sha
+git rebase -i --autosquash $last_commit_sha~1
+
