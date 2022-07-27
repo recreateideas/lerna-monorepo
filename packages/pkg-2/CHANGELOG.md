@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0-develop.4](https://github.com/recreateideas/lerna-monorepo/compare/@recreateideas/pkg-2@0.7.0-develop.3...@recreateideas/pkg-2@0.7.0-develop.4) (2022-07-27)
+
+
+### Features
+
+* **test:** some ([b47b54f](https://github.com/recreateideas/lerna-monorepo/commit/b47b54fd0a5f75d5b9823dd207c3c3a1345cd909))
+
+
+
+
+
 # [0.7.0-develop.3](https://github.com/recreateideas/lerna-monorepo/compare/@recreateideas/pkg-2@0.7.0-develop.2...@recreateideas/pkg-2@0.7.0-develop.3) (2022-07-27)
 
 
