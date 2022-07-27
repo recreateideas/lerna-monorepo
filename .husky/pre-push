@@ -7,4 +7,13 @@ branch_name=${branch_name##refs/heads/}
 last_origin_sha=$(git show origin/"$branch_name" | grep commit -m 1 | awk '{ print $2 }')
 echo ORIGIN $last_origin_sha
 
+git rebase -s ours --preserve-merges origin/master
+
 echo "$last_origin_sha" > .last-origin
+
+git add .last-origin
+git commit -m "fix(last-origin): updated" --no-verify
+
+last_commit_sha=$(git log | grep commit -m 1 | awk '{ print $2 }');
+
+git rebase -s ours --rebase-merges $last_commit_sha
