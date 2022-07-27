@@ -4,4 +4,3 @@ export default "ciao-pkg-2";
 
 //hot fix
 // some
-// some
