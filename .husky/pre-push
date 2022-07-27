@@ -6,7 +6,7 @@ origin_file=.last-origin
 branch_name="$(git symbolic-ref HEAD 2>/dev/null)"
 branch_name=${branch_name##refs/heads/}
 
-repo_url=$(node -pe "require('./packages/${BAAS_PACKAGE}/cdk.json').repository.url") 
+repo_url=$(node -pe "require('./package.json').repository.url") 
 current_origin_sha=$(git ls-remote ${repo_url} | grep "refs/heads/develop" | awk '{ print $1 }' )
 saved_origin=`cat $origin_file`
 
