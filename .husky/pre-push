@@ -6,11 +6,12 @@ branch_name="$(git symbolic-ref HEAD 2>/dev/null)"
 branch_name=${branch_name##refs/heads/}
 
 current_origin_sha=$(git show origin/"$branch_name" | grep commit -m 1 | awk '{ print $2 }')
-value=`cat $origin_file`
+saved_origin=`cat $origin_file`
 
 echo ORIGIN $current_origin_sha
+echo SAVED_ORIGIN $current_origin_sha
 
-if [[ $current_origin_sha == "$value"  ]]; then
+if [[ $current_origin_sha == "$saved_origin"  ]]; then
     echo "> Same origin."
     exit 0
 fi
