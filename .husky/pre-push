@@ -25,3 +25,4 @@
     git commit -m "fix(last-head): updated" --no-verify
     git reset HEAD~1 --soft
     git commit --amend --no-edit
+
