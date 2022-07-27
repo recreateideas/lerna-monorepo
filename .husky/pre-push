@@ -6,7 +6,8 @@ origin_file=.last-origin
 branch_name="$(git symbolic-ref HEAD 2>/dev/null)"
 branch_name=${branch_name##refs/heads/}
 
-current_origin_sha=$(git ls-remote https://github.com/recreateideas/lerna-monorepo.git | grep "refs/heads/develop" | awk '{ print $1 }' )
+repo_url=$(node -pe "require('./packages/${BAAS_PACKAGE}/cdk.json').repository.url") 
+current_origin_sha=$(git ls-remote ${repo_url} | grep "refs/heads/develop" | awk '{ print $1 }' )
 saved_origin=`cat $origin_file`
 
 echo ORIGIN $current_origin_sha
@@ -19,9 +20,7 @@ fi
 
 echo "$current_origin_sha" > .last-origin
 
-# last_commit_sha=$(git log | grep commit -m 1 | awk '{ print $2 }');
 git add .last-origin
 git commit -m "fix(last-origin): updated" --no-verify
-# git rebase -i --autosquash $last_commit_sha~1
 git reset HEAD~1 --soft
 git commit --amend --no-edit
