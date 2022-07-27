@@ -3,7 +3,7 @@
   "repository": {
     "url": "https://github.com/recreateideas/lerna-monorepo.git"
   },
-  "version": "0.6.0",
+  "version": "0.7.0-develop.0",
   "peerDependencies": {
     "@recreateideas/pkg-3": "0.2.1"
   },
