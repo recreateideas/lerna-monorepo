@@ -1,11 +1,9 @@
 {
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "exact": true,
   "command": {
     "version": {
-      "allowBranch": "master",
+      "allowBranch": ["*"],
       "conventionalCommits": true
     },
     "publish": {
