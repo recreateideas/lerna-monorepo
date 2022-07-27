@@ -23,4 +23,4 @@ changed=$(npx lerna changed --json)
 val=$(node scripts/find_preid.js $preid "${changed}" "$(git tag --sort=committerdate)")
 echo $val
 # publish packages in prerelease for feature branches, develop, stage, release
-# npx lerna publish --conventional-prerelease --preid $preid
+npx lerna publish --conventional-prerelease --preid $preid
