@@ -16,6 +16,7 @@ if [[ $current_origin_sha == "$saved_origin"  ]]; then
     exit 0
 fi
 
+
 echo "$current_origin_sha" > .last-origin
 
 # last_commit_sha=$(git log | grep commit -m 1 | awk '{ print $2 }');
