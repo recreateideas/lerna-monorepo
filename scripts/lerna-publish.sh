@@ -19,6 +19,10 @@
 #     npx lerna publish --conventional-graduate --yes
 # fi
 
+
+
 preid=$(git rev-parse --abbrev-ref HEAD | sed 's/\//-/g' | sed 's/[^0-9a-zA-Z\-]//g' | tr '[:upper:]' '[:lower:]')
+
+echo $preid
 # publish packages in prerelease for feature branches, develop, stage, release
 npx lerna publish --conventional-prerelease --preid $preid
