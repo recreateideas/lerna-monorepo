@@ -10,3 +10,5 @@ echo ORIGIN $last_head_sha
 
 # list unique packages names that contain changes between current commit and origin
   changes=$(git diff $last_commit_sha $last_head_sha | grep "+++" | grep -oE "b\/packages\/[^/]+" | sort -u)
+
+echo $changes
