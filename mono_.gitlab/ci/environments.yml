@@ -1,0 +1,57 @@
+.dev:
+  variables:
+    AWS_ACCOUNT_ID: "327922445464"
+    ENVIRONMENT: dev
+    FEATURE_BRANCH: "true"
+    CDK_DEPLOY_ACCOUNT: "327922445464"
+    CDK_DEPLOY_REGION: "ap-southeast-2"
+  only:
+    - /^(feat|chore|fix|perf|refactor|dependabot)\/.*$/
+  artifacts:
+    expire_in: 1 hour
+
+.develop:
+  variables:
+    AWS_ACCOUNT_ID: "327922445464"
+    ENVIRONMENT: dev
+    CDK_DEPLOY_ACCOUNT: "327922445464"
+    CDK_DEPLOY_REGION: "ap-southeast-2"
+  only:
+    - develop
+  artifacts:
+    expire_in: 1 day
+
+.stage:
+  variables:
+    AWS_ACCOUNT_ID: "058508055382"
+    ENVIRONMENT: stage
+    CDK_DEPLOY_ACCOUNT: "058508055382"
+    CDK_DEPLOY_REGION: "ap-southeast-2"
+  only:
+    - develop
+  artifacts:
+    expire_in: 1 day
+
+.release:
+  variables:
+    AWS_ACCOUNT_ID: "058508055382"
+    ENVIRONMENT: release
+    RELEASE_BRANCH: "true"
+    CDK_DEPLOY_ACCOUNT: "058508055382"
+    CDK_DEPLOY_REGION: "ap-southeast-2"
+  only:
+    - release
+    - /release\/.*/
+  artifacts:
+    expire_in: 1 week
+
+.prod:
+  variables:
+    AWS_ACCOUNT_ID: "252439995045"
+    CDK_DEPLOY_ACCOUNT: "252439995045"
+    CDK_DEPLOY_REGION: "ap-southeast-2"
+    ENVIRONMENT: prod
+  only:
+    - main
+  artifacts:
+    expire_in: 1 week

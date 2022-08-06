@@ -1,0 +1,40 @@
+stage:npm install:
+  extends:
+    - .install
+    - .stage
+  stage: install
+
+stage:webpack build:
+  extends:
+    - .build
+    - .stage
+  stage: build
+
+stage:unit-tests:
+  extends:
+    - .unit-test
+    - .stage
+  stage: build
+
+# stage:lambda-test:
+#   extends:
+#     - .stage
+#     - .lambda-test
+#   stage: build
+
+stage:cdk deploy:
+  dependencies:
+    - stage:webpack build
+  extends:
+    - .cdk-deploy
+    - .stage
+  stage: deploy
+####################################
+### Add back tests when required ###
+####################################
+
+# stage:postman:
+#   extends:
+#     - .stage
+#     - .postman-test
+#   stage: test

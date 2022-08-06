@@ -1,0 +1,28 @@
+# For feature branches, we are building and deploying under one job
+# this will decrease the pipeline time by 3 minutes, since there will
+# be no need to upload and download artifacts between different jobs.
+dev:build-and-deploy:
+  extends:
+    - .dev
+    - .build-and-deploy
+  stage: build
+
+dev:unit-test:
+  extends: 
+    - .dev
+    - .unit-test
+  stage: test
+
+# dev:lambda-test:
+#   extends: 
+#     - .dev 
+#     - .lambda-test
+#   stage: test
+
+####################################
+### Add back tests when required ###
+####################################
+
+# dev:postman:
+#   extends: [".dev", ".postman-test"]
+#   stage: test

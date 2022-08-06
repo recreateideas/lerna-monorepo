@@ -1,0 +1,52 @@
+
+.unit-test:
+  allow_failure: false
+  artifacts:
+    expire_in: 1 week # If we are letting people look at a deployed stage environment we may still need these artifacts.
+    reports: # Export the unit test report
+      junit:
+        - ./coverage/unit-test-report.xml
+    paths:
+      - node_modules
+      - services/**/node_modules
+  retry: 2
+  script:
+    - npm run test:unit:scoped
+  when: on_success
+
+.lambda-test:
+  image:
+    name: 606789157019.dkr.ecr.ap-southeast-2.amazonaws.com/base-image-samlocal:dev
+    entrypoint: [""]
+  artifacts:
+    expire_in: 1 week
+    reports:
+      junit:
+        - ./coverage/lambda-test-report.xml
+    paths:
+      - services/**/dist
+      - services/**/build
+      - services/**/compiled-schemas
+      - services/**/scopes-map.json
+      - services/**/api-specification
+      - services/**/__tsoa.json
+  retry: 2
+  services:
+    - docker:dind
+  script:
+    - npm run test:lambda:ci:scoped
+  when: on_success
+
+.postman-test:
+  retry: 2
+  artifacts:
+    paths:
+      - services/**/dist
+      - services/**/build
+      - services/**/compiled-schemas
+      - services/**/scopes-map.json
+      - services/**/api-specification
+      - services/**/__tsoa.json
+  script:
+    - ./build/bash/postman-tests.sh
+  when: on_success

@@ -1,0 +1,63 @@
+# [XXX-###](https://beemit.atlassian.net/browse/XXX-###)
+
+## Summary
+
+(Summarize the bug encountered concisely)
+
+## Steps to reproduce
+
+(How can the issue reproduced - this is very important)
+
+## What is the current bug behavior?
+
+(What actually happens)
+
+## What is the expected correct behavior?
+
+(What you should see instead)
+
+## What tests have been written to catch this issue next time?
+
+(Link to the tests you wrote)
+
+### Screenshots
+
+Any screenshots of inputs and outputs in Postman or alike.
+
+### Dependencies
+
+- Is there anything that needs to be merged/included before this can be merged?
+  - Yes/No - If Yes, please link branch:
+- Is this PR dependent on any other PR?
+  - Yes/No - If Yes, please link PR:
+- Does this PR close any open issues?
+  - Yes/No - If Yes, please link Issue:
+
+### Checklist
+
+- [Y/N/NA] Requires/Contains infrastructure changes; detailed below:
+
+  - _Add detail here, or delete this bullet point._
+
+- [Y/N/NA] Requires/Contains API contract changes; detailed below:
+
+  - _Add detail here, or delete this bullet point._
+
+- [Y/N/NA] Contains breaking changes; detailed below:
+
+  - _Add detail here, or delete this bullet point._
+
+- [Y/N/NA] Unit tests required & written
+
+  - _(Should always be YES)_
+
+- [Y/N/NA] API tests required & written
+
+  - _(Should always be YES)_
+
+- [Y/N/NA] Workflow tests required & written
+
+  - _(Should always be YES)_
+
+- [Y/N/NA] Double checked target branch
+  - _By default, you should aim your PR at `develop` -- unless there's good reason not to?_

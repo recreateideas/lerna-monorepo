@@ -1,0 +1,31 @@
+prod:npm install:
+  extends:
+    - .install
+    - .prod
+  stage: install
+
+prod:webpack build:
+  extends:
+    - .build
+    - .prod
+  stage: build
+
+prod:unit-tests:
+  extends:
+    - .unit-test
+    - .prod
+  stage: build
+
+# prod:lambda-test:
+#   extends:
+#     - .develop
+#     - .lambda-test
+#   stage: build
+
+prod:cdk deploy:
+  dependencies:
+    - prod:webpack build
+  extends:
+    - .cdk-deploy
+    - .prod
+  stage: deploy

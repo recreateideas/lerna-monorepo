@@ -1,0 +1,80 @@
+.install:
+  artifacts:
+    paths: # Save the build artifacts for later steps
+      - node_modules
+      - services/**/node_modules
+      - services/**/compiled-schemas
+      - services/**/scopes-map.json
+      - services/**/api-specification
+      - services/**/__tsoa.json
+    expire_in: 1 day
+  allow_failure: false
+  script:
+    - echo "***** Building Package '${BAAS_PACKAGE}', branch '${CI_COMMIT_BRANCH}'' *****"
+    - git reset --hard origin/$CI_COMMIT_BRANCH
+    - npm run install:ci:scoped
+    - npm run build:dependencies:scoped
+  when: on_success
+
+.build:
+  artifacts:
+    paths: # Save the build artifacts for later steps
+      - services/**/dist
+      - services/**/build
+      - services/**/compiled-schemas
+      - services/**/scopes-map.json
+      - services/**/api-specification
+      - services/**/__tsoa.json
+      # - node_modules # Node Modules should not be required for future steps!
+    expire_in: 1 day
+  allow_failure: false
+  script:
+    - sam --version
+    - ./build/bash/build.sh
+    - mkdir -p build/output
+    - node -pe "require('./package.json').name" > build/output/app-name.txt
+    - node -pe "require('./package.json').version" > build/output/release-version.txt
+  when: on_success
+
+.build-and-deploy:
+  artifacts:
+    paths: # Save the build artifacts for later steps
+      - node_modules
+      - services/**/node_modules
+      - services/**/compiled-schemas
+      - services/**/scopes-map.json
+      - services/**/api-specification
+      - services/**/__tsoa.json
+    expire_in: 1 day
+  allow_failure: false
+  script:
+    - echo "***** Building and Deploying Package '${BAAS_PACKAGE}', branch '${CI_COMMIT_BRANCH}'' *****"
+    - git reset --hard origin/$CI_COMMIT_BRANCH
+    - npm run install:ci:scoped
+    - npm run build:dependencies:scoped
+    - sam --version
+    - ./build/bash/build.sh
+    - ./build/bash/gitlab-mr.sh
+    - mkdir -p build/output
+    - node -pe "require('./package.json').name" > build/output/app-name.txt
+    - node -pe "require('./package.json').version" > build/output/release-version.txt
+    - ./build/bash/cdk.sh
+  when: on_success
+
+.mr:
+  allow_failure: false
+  script:
+    - ./build/bash/gitlab-mr.sh
+  when: always
+
+.cdk-deploy:
+  allow_failure: false
+  script:
+    - npm run install:ci:scoped typescript # TypeScript is a unregistered dependency for CDK
+    - ./build/bash/cdk.sh
+  when: always
+
+.cleanup:
+  script:
+    - ./build/bash/feature-branch-cleanup.sh
+  when: always

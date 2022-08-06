@@ -1,0 +1,57 @@
+default:
+  tags:
+    - ec2-docker
+  image:
+    name: 606789157019.dkr.ecr.ap-southeast-2.amazonaws.com/base-image:latest
+    entrypoint: [""]
+
+stages:
+  - publish
+  - triggers
+  - prod-release
+
+trigger-from-changes:
+  before_script:
+    - |
+      git config --global user.name "${GITLAB_USER_NAME}"
+      git config --global user.email "${GITLAB_USER_EMAIL}"
+      echo "***********"
+      echo "User Login: $GITLAB_USER_LOGIN"
+      echo "User: $GITLAB_USER_NAME"
+      echo "Email: $GITLAB_USER_EMAIL"
+      echo "Current commit hash: $(git rev-parse HEAD)"
+      echo "***********"
+      git remote set-url origin "https://${GITLAB_USER_NAME}:${GITLAB_TOKEN}@gitlab.com/b707/platform-and-payments/grumpy/monorepo-poc.git"
+      git checkout $CI_COMMIT_BRANCH
+      git reset --hard origin/$CI_COMMIT_BRANCH
+      git remote -v
+  script:
+    - ./.monorepo/scripts/create-child-triggers-from-git-changes.sh
+  allow_failure: false
+  artifacts:
+    paths:
+      - generated-triggers.yml
+  rules:
+    - if: '$GITLAB_USER_LOGIN != "engineering-sa" && $CI_COMMIT_MESSAGE =~ /[^chore\(release\)].*/'
+  stage: publish
+
+dynamic-triggers:
+  stage: publish
+  needs:
+    - trigger-from-changes
+  trigger:
+    include:
+      - artifact: generated-triggers.yml
+        job: trigger-from-changes
+    strategy: depend
+  rules:
+    - if: '$GITLAB_USER_LOGIN != "engineering-sa" && $CI_COMMIT_MESSAGE =~ /[^chore\(release\)].*/'
+
+release:blue-green:
+  stage: prod-release
+  needs:
+    - dynamic-triggers
+  script: 'echo blue-green'
+  when: on_success
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "prod" && $GITLAB_USER_LOGIN != "engineering-sa" && $CI_COMMIT_MESSAGE =~ /[^chore\(release\)].*/'

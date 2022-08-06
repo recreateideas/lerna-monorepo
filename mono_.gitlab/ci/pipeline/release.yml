@@ -1,0 +1,38 @@
+release:npm install:
+  extends:
+    - .install
+    - .release
+  stage: install
+
+release:webpack build:
+  extends:
+    - .build
+    - .release
+  stage: build
+
+release:unit-tests:
+  extends:
+    - .unit-test
+    - .release
+  stage: build
+
+# release:lambda-test:
+#   extends: 
+#     - .release
+#     - .lambda-test
+#   stage: build
+
+release:cdk deploy:
+  dependencies:
+    - release:webpack build
+  extends:
+    - .cdk-deploy
+    - .release
+  stage: deploy
+####################################
+### Add back tests when required ###
+####################################
+
+# release:postman:
+#   extends: [".release", ".postman-test"]
+#   stage: test

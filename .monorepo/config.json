@@ -1,0 +1,6 @@
+{
+  "__common-package__": "If changes to it are made, this package will be always deployed before any other",
+  "common-package": "baas-common",
+  "__head-file__": "File where the latest head sha is saved before every push",
+  "head-file": "./.monorepo/HEAD.md"
+}
