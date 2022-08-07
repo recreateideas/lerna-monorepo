@@ -1,4 +1,6 @@
+#!/usr/bin/env bash
 
+git fetch --tags
 branch_name="$(git symbolic-ref HEAD 2>/dev/null)"
 branch_name=${branch_name##refs/heads/}
 head_file=$(node -pe "require('./.monorepo/config.json')['head-file']")
@@ -34,6 +36,23 @@ save_remote_head_pre_push
 ##############
 # VERSIONING #
 ##############
+echo $BASH_VERSION
+
+get_origin_versions () {
+  git checkout $last_origin_sha
+  packages=$(find . -name '*package.json' -not -path "**/node_modules/*")
+  for package in $packages; do
+    name=$(node -pe "require('${package}').name") 
+    version=$(node -pe "require('${package}').version")
+    origin_versions+="${name}*${version} "
+  done
+  git checkout $branch_name
+  echo "##############" $branch_name
+  echo $origin_versions
+  echo "##############"
+}
+get_origin_versions
+
 get_semver_bump_type () {
   echo ">>> identifying semver package bump"
   echo ">>> getting commits between last commit (${last_commit_sha}) AND last origin ($last_origin_sha)"
@@ -76,9 +95,13 @@ echo "***************"
 echo $branch_name
 echo "***************"
 # get remote branch
-# if remote branch === current branch -> increase prever
-# if remote branch < current branch
+# if current branch === preid branch
+#   -> increase prever
+# if current branch < preid branch (e.b checkout new branch from develop)
+#   -> update preid to current preid
+#   -> 
 # if remote branch > current branch
+
 
 for changed_package in $CHANGES; do
   prefix="a/"

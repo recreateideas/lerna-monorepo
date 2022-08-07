@@ -1,0 +1,61 @@
+1.0.0-develop.0
+
+-> checkout feat from develop
+1.0.0-feat.0
+1.0.0-feat.1
+1.0.0-feat.2
+           ^
+-> merge to develop
+1.0.0-develop.1
+              ^
+
+-> checkout feat from develop
+1.0.0-feat.0
+1.0.0-feat.1
+1.0.0-feat.2
+           ^
+
+-> merge to develop
+git checkout saved_last_origin
+get package.jsons versions
+increment accordingly
+1.0.0-develop.2
+              ^
+
+-> checkout release from develop
+push release
+1.0.0-release.0
+              ^
+
+-> fix in release
+1.0.0-release.1
+1.0.0-release.2
+              ^
+
+-> merge release to develop
+git checkout saved_last_origin
+get package.jsons versions
+increment accordingly
+1.0.0-develop.3
+              ^
+
+-> checkout release from develop
+code code code
+git checkout saved_last_origin
+get package.jsons versions
+increment accordingly
+1.0.0-release.3
+              ^
+
+-> checkout prod from release
+1.0.0
+      ^
+-> hotfix
+1.1.0
+  ^
+-> merge prod to release
+1.1.1-release.0
+    ^         ^
+-> merge prod to develop
+1.1.1-develop.0
+    ^         ^
