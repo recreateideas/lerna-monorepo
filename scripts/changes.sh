@@ -19,7 +19,7 @@
 #     npx lerna publish --conventional-graduate --yes
 # fi
 file=~/Desktop/text
-rm -f $file
+
 last_commit_sha=$(git log | grep commit -m 1 | awk '{ print $2 }');
 echo LAST $last_commit_sha
 branch_name="$(git symbolic-ref HEAD 2>/dev/null)"
