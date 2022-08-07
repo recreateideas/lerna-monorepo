@@ -39,7 +39,7 @@ save_remote_head_pre_push
 echo $BASH_VERSION
 
 get_origin_versions () {
-  git checkout $saved_last_origin
+  git checkout $saved_last_origin 2>/dev/null
   packages=$(find . -name '*package.json' -not -path "**/node_modules/*")
   for package in $packages; do
     name=$(node -pe "require('${package}').name") 
@@ -104,7 +104,6 @@ echo "***************"
 #   -> update preid to current preid
 #   -> 
 # if remote branch > current branch
-
 
 for changed_package in $CHANGES; do
   prefix="a/"
