@@ -39,7 +39,7 @@ save_remote_head_pre_push
 echo $BASH_VERSION
 
 get_origin_versions () {
-  git checkout $saved_last_origin 2>/dev/null
+  git checkout $saved_last_origin
   packages=$(find . -name '*package.json' -not -path "**/node_modules/*")
   for package in $packages; do
     name=$(node -pe "require('${package}').name") 
@@ -52,7 +52,9 @@ get_origin_versions () {
   echo $origin_versions
   echo "##############"
 }
-get_origin_versions 
+get_origin_versions
+
+echo $origin_versions | grep "@recreateideas/lerna-monorepo"
 
 get_semver_bump_type () {
   echo ">>> identifying semver package bump"
