@@ -111,6 +111,7 @@ for changed_package in $CHANGES; do
   changed_package_location=${changed_package#a/}
   name=$(node -pe "require('./${changed_package_location}/package.json').name") 
   current_version=$(node -pe "require('./${changed_package_location}/package.json').version")
-  echo $name "----->" $changed_package_location, $current_version
   split_version_entities $current_version
+  old_version=$(echo $origin_versions | tr ' ' '\n' | grep "$name")
+  echo "$name : $old_version ----> $current_version"
 done
