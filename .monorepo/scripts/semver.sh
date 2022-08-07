@@ -54,8 +54,6 @@ get_origin_versions () {
 }
 get_origin_versions
 
-echo $origin_versions | tr ' ' '\n' | grep "@recreateideas/lerna-monorepo"
-
 get_semver_bump_type () {
   echo ">>> identifying semver package bump"
   echo ">>> getting commits between last commit (${last_commit_sha}) AND last origin ($last_origin_sha)"
