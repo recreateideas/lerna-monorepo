@@ -47,11 +47,12 @@ get_origin_versions () {
     echo $name $version
     origin_versions+="${name}*${version} "
   done
+  git checkout $branch_name
+  echo "##############"
+  echo $origin_versions
+  echo "##############"
 }
-get_origin_versions
-echo "##############" $branch_name
-echo $origin_versions
-echo "##############"
+get_origin_versions 
 
 get_semver_bump_type () {
   echo ">>> identifying semver package bump"
