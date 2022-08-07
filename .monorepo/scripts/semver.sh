@@ -34,26 +34,57 @@ save_remote_head_pre_push
 ##############
 # VERSIONING #
 ##############
+get_semver_bump_type () {
+  echo ">>> identifying semver package bump"
+  echo ">>> getting commits between last commit (${last_commit_sha}) AND last origin ($last_origin_sha)"
+  COMMITS=$(git log "${last_origin_sha}..${last_commit_sha}")
+  if [[ "$COMMITS" == *"BREAKING CHANGE"* ]]; then
+    BUMP="major"
+  elif [[ "$COMMITS" == *"feat("* ]]; then
+    BUMP="minor"
+  else
+    BUMP="patch"
+  fi
+  echo " "
+  echo ">>> BUMP TYPE:" $BUMP
+}
+get_semver_bump_type
+
 get_changes () {
   # list of "packages" contained in the git diff between last commit and last saved origin.
   CHANGES=$(git diff $last_commit_sha $last_origin_sha | grep "\-\-\- " | grep -oE "a\/packages\/[^/]+|a\/services\/[^/]+" | sort -u)
-  echo ">>> CHANGED PACKAGES:" $CHANGES
 }
 get_changes
+echo " "
 
-get_semver_bump () {
-  echo ">>> identifying semver package bump"
-  echo $last_commit_sha "****" $last_origin_sha
-  git log "${last_origin_sha}..${last_commit_sha}"
+split_version_entities () {
+  regex="([0-9]+).([0-9]+).([0-9]+)-([a-z0-9A-Z]+).([0-9a-z])*"
+  if [[ $1 =~ $regex ]]
+    then
+    major=${BASH_REMATCH[1]}
+    minor=${BASH_REMATCH[2]}
+    patch=${BASH_REMATCH[3]}
+    preid=${BASH_REMATCH[4]}
+    prever=${BASH_REMATCH[5]}
+    echo $major $minor $patch ${preid} $prever
+    else
+        echo "$f doesn't match" >&2 # this could get noisy if there are a lot of non-matching files
+    fi
 }
 
-get_semver_bump
-echo " "
-echo " "
+echo "***************"
+echo $branch_name
+echo "***************"
+# get remote branch
+# if remote branch === current branch -> increase prever
+# if remote branch < current branch
+# if remote branch > current branch
+
 for changed_package in $CHANGES; do
   prefix="a/"
   changed_package_location=${changed_package#a/}
   name=$(node -pe "require('./${changed_package_location}/package.json').name") 
-  current_version=$(node -pe "require('./${changed_package_location}/package.json').version") 
-  echo $name "----->" $changed_package_location "," $current_version
+  current_version=$(node -pe "require('./${changed_package_location}/package.json').version")
+  echo $name "----->" $changed_package_location, $current_version
+  split_version_entities $current_version
 done
