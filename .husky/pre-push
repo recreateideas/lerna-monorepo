@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-source .monorepo/scripts/save_remote_head.sh
+source .monorepo/scripts/semver.sh
 
-save_remote_head
+semver
