@@ -45,9 +45,7 @@ get_origin_versions () {
     name=$(node -pe "require('${package}').name") 
     version=$(node -pe "require('${package}').version")
     echo $name $version
-    origin_versions+=`
-"${name}*${version}"
-`
+    origin_versions+="${name}*${version}"
   done
   git checkout $branch_name
   echo "##############"
@@ -56,7 +54,7 @@ get_origin_versions () {
 }
 get_origin_versions
 
-echo $origin_versions | grep "@recreateideas/lerna-monorepo"
+echo $origin_versions | tr ' ' '\n' | grep "@recreateideas/lerna-monorepo"
 
 get_semver_bump_type () {
   echo ">>> identifying semver package bump"
