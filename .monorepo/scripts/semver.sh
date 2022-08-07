@@ -45,7 +45,7 @@ get_origin_versions () {
     name=$(node -pe "require('${package}').name") 
     version=$(node -pe "require('${package}').version")
     echo $name $version
-    origin_versions+="${name}*${version}\n"
+    origin_versions+=$"${name}*${version}\n"
   done
   git checkout $branch_name
   echo "##############"
