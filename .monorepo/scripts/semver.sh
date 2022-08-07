@@ -39,19 +39,19 @@ save_remote_head_pre_push
 echo $BASH_VERSION
 
 get_origin_versions () {
-  git checkout $last_origin_sha
+  git checkout $saved_last_origin 2>/dev/null
   packages=$(find . -name '*package.json' -not -path "**/node_modules/*")
   for package in $packages; do
     name=$(node -pe "require('${package}').name") 
     version=$(node -pe "require('${package}').version")
+    echo $name $version
     origin_versions+="${name}*${version} "
   done
-  git checkout $branch_name
-  echo "##############" $branch_name
-  echo $origin_versions
-  echo "##############"
 }
 get_origin_versions
+echo "##############" $branch_name
+echo $origin_versions
+echo "##############"
 
 get_semver_bump_type () {
   echo ">>> identifying semver package bump"
