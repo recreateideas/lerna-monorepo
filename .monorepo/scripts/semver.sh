@@ -43,7 +43,8 @@ get_changes
 
 get_semver_bump () {
   echo ">>> identifying semver package bump"
-  git log "${last_commit_sha}..${last_origin_sha}" --oneline
+  echo $last_commit_sha "****" $last_origin_sha
+  git log "${last_origin_sha}..${last_commit_sha}"
 }
 
 get_semver_bump
